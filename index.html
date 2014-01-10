@@ -28,7 +28,8 @@
       var numPrts = PrtSeq.Count;
       
       for (var i = 0; i < numPrts; i++) {
-          scaleFile(PrtSeq.Item(i));
+      	  var fullName = PrtSeq.Item(i);
+      	  scaleFile(ShortName(fullName));
       }
 			  
       function scaleFile(targetPN) {
