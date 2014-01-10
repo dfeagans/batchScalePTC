@@ -13,25 +13,22 @@
     <link rel="stylesheet" href="style.css">
   </head>
   <body>
-    <h1>This will scale all the components within the open assembly to scale units. The main assembly will remain in it's original units.</h1>
+    <h1>This will scale all the components within the open assembly 50%, and then intepret them to 45% scale units. The main assembly will remain in it's original units. It's critical that the scaling macro is in your config.pro It's also available at my <a href="https://github.com/dfeagans/batchScalePTC">github</a> as well</h1>
 
     <script>
 
       window.mGlob = new ActiveXObject("pfc.MpfcCOMGlobal"); //Makes connection to Pro-E
       window.oSession = mGlob.GetProESession();  //Returns reference to current session to oSession
-<!--      
+
       var DescriptorFactory = new ActiveXObject("pfc.pfcModelDescriptor");
       var targetPN = "DENSITY-91829_PRS";
       var targetDescript = DescriptorFactory.Create (new ActiveXObject("pfc.pfcModelType").MDL_PART, targetPN , null);
       var target = oSession.OpenFile(targetDescript);
-      var OpenedName = target.Model.FullName; -->
-
-      var solid = oSession.CurrentModel;
-      var props = solid.GetMassProperty(void null);
-      alert(props.Mass);
-<!--      alert(OpenedName);
-properties = OpenedName.GetMassProperty(void null);
-alert(properties.Mass); -->
+      target.Activate();
+      var macroKey = "%l;";
+      oSession.RunMacro(macroKey);
+      alert("WORKED");
+      target.Model.Erase();
 
     </script>
 
