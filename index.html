@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>batchScalePTC</title>
+    <meta name="description" content="Scales a large number of components quickly">
+    <meta name="author" content="dfeagans">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <h1>This will scale all the components within the open assembly to scale units. The main assembly will remain in it's original units.</h1>
+
+    <script>
+
+      window.mGlob = new ActiveXObject("pfc.MpfcCOMGlobal"); //Makes connection to Pro-E
+      window.oSession = mGlob.GetProESession();  //Returns reference to current session to oSession
+<!--      
+      var DescriptorFactory = new ActiveXObject("pfc.pfcModelDescriptor");
+      var targetPN = "DENSITY-91829_PRS";
+      var targetDescript = DescriptorFactory.Create (new ActiveXObject("pfc.pfcModelType").MDL_PART, targetPN , null);
+      var target = oSession.OpenFile(targetDescript);
+      var OpenedName = target.Model.FullName; -->
+
+      var solid = oSession.CurrentModel;
+      var props = solid.GetMassProperty(void null);
+      alert(props.Mass);
+<!--      alert(OpenedName);
+properties = OpenedName.GetMassProperty(void null);
+alert(properties.Mass); -->
+
+    </script>
+
+
+
+  </body>
+</html>
