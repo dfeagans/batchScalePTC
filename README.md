@@ -3,7 +3,7 @@ batchScalePTC
 
 Scales a large number of parts in an assembly quickly
 
-How To
+**How To**
 
 
 1. Download the critical scaling mapkey that's included in this github repo.
