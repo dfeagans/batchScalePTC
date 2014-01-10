@@ -19,17 +19,19 @@
 
       window.mGlob = new ActiveXObject("pfc.MpfcCOMGlobal"); //Makes connection to Pro-E
       window.oSession = mGlob.GetProESession();  //Returns reference to current session to oSession
-
       var DescriptorFactory = new ActiveXObject("pfc.pfcModelDescriptor");
-      var targetPN = "DENSITY-91829_PRS";
+
+
+      var testFileName = "DENSITY-91829_PRS";
+      scaleFile(testFileName);
+
+      function scaleFile(targetPN) {
       var targetDescript = DescriptorFactory.Create (new ActiveXObject("pfc.pfcModelType").MDL_PART, targetPN , null);
       var target = oSession.OpenFile(targetDescript);
       target.Activate();
-      var macroKey = "%l;";
-      oSession.RunMacro(macroKey);
-      alert("WORKED");
-      target.Model.Erase();
-
+      oSession.RunMacro("%y;");
+      }
+      
     </script>
 
 
