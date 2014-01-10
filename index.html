@@ -27,18 +27,19 @@
       var PrtSeq = oSession.ListFiles("*.prt",OpenOptions,Dir);
       var numPrts = PrtSeq.Count;
       
-      var testFileName = ShortName(PrtSeq.Item(0));
-      scaleFile(testFileName);
-      
+      for (var i = 0; i < numPrts; i++) {
+          scaleFile(PrtSeq.Item(i));
+      }
+			  
       function scaleFile(targetPN) {
-      var targetDescript = DescriptorFactory.Create (new ActiveXObject("pfc.pfcModelType").MDL_PART, targetPN , null);
-      var target = oSession.OpenFile(targetDescript);
-      target.Activate();
-      oSession.RunMacro("%y;");
+          var targetDescript = DescriptorFactory.Create (new ActiveXObject("pfc.pfcModelType").MDL_PART, targetPN , null);
+          var target = oSession.OpenFile(targetDescript);
+          target.Activate();
+          oSession.RunMacro("%y;");
       }
       
       function ShortName (fullname) {
-      return fullname.slice(fullname.lastIndexOf("/")+1,fullname.length-4);
+          return fullname.slice(fullname.lastIndexOf("/")+1,fullname.length-4);
       }
 
 
