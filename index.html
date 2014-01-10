@@ -9,8 +9,6 @@
     <meta name="author" content="dfeagans">
     
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <link rel="stylesheet" href="style.css">
   </head>
   <body>
     <h1>This will scale all the components within the open assembly 50%, and then intepret them to 45% scale units. The main assembly will remain in it's original units. It's critical that the scaling macro is in your config.pro It's also available at my <a href="https://github.com/dfeagans/batchScalePTC">github</a> as well</h1>
@@ -26,12 +24,23 @@
       var Dir = "wtws://" + ServerHandle.Alias + "/" + ServerHandle.ActiveWorkspace;
       var PrtSeq = oSession.ListFiles("*.prt",OpenOptions,Dir);
       var numPrts = PrtSeq.Count;
+	  var i = 0;
+	  
+	  oSession.CurrentWindow.Activate;
+	  oSession.CurrentWindow.SetBrowserSize(0.0);
+	  
+      var runIt = setInterval(function(){
+	    var fullName = PrtSeq.Item(i);
+		var scalingTarget = ShortName(fullName);		
+		scaleFile(scalingTarget);	  
+		
+		if (i == numPrts) {
+			clearInterval(runIt);
+		} else {
+			i++;
+		}
+	  }, 10000);
       
-      for (var i = 0; i < numPrts; i++) {
-      	  var fullName = PrtSeq.Item(i);
-      	  scaleFile(ShortName(fullName));
-      }
-			  
       function scaleFile(targetPN) {
           var targetDescript = DescriptorFactory.Create (new ActiveXObject("pfc.pfcModelType").MDL_PART, targetPN , null);
           var target = oSession.OpenFile(targetDescript);
