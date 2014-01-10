@@ -1,0 +1,11 @@
+﻿mapkey y ~ Command `ProCmdAOScaleModel` ;\
+mapkey(continued) ~ Activate `storage_conflicts` `OK_PushButton`;.50;\
+mapkey(continued) ~ Activate `0_std_confirm` `OK`;~ Close `main_dlg_cur` `appl_casc`;\
+mapkey(continued) ~ Command `ProCmdMmModelProperties` ;\
+mapkey(continued) ~ Activate `mdlprops_dlg` `UNITS_lay_Controls.push_Change.lay_instance`;\
+mapkey(continued) ~ Select `um_finder` `SystemsFinderList` 1 `sysunits8`;\
+mapkey(continued) ~ Activate `um_finder` `PrincipalPush`;\
+mapkey(continued) ~ Select `um_sys_conv_new` `ConvertRadio` 1 `interpret numbers`;\
+mapkey(continued) ~ Activate `um_sys_conv_new` `OKStd`;~ Activate `um_finder` `ClosePush`;\
+mapkey(continued) ~ Activate `mdlprops_dlg` `DlgClose_push`;~ Command `ProCmdRegenPart` ;\
+mapkey(continued) ~ Command `ProCmdModelSave` ;~ Activate `file_saveas` `OK`;
