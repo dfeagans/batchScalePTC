@@ -8,4 +8,7 @@ mapkey(continued) ~ Activate `um_finder` `PrincipalPush`;\
 mapkey(continued) ~ Select `um_sys_conv_new` `ConvertRadio` 1 `interpret numbers`;\
 mapkey(continued) ~ Activate `um_sys_conv_new` `OKStd`;~ Activate `um_finder` `ClosePush`;\
 mapkey(continued) ~ Activate `mdlprops_dlg` `DlgClose_push`;~ Command `ProCmdRegenPart` ;\
-mapkey(continued) ~ Command `ProCmdModelSave` ;~ Activate `file_saveas` `OK`;
+mapkey(continued) ~ Command `ProCmdModelSave` ;~ Activate `file_saveas` `OK`;\
+mapkey(continued) ~ Command `ProCmdWinCloseGroup`;\
+mapkey(continued) ~ Command `ProCmdModelEraseNotDisp` ;~ Activate `file_erase_nd` `ok_pb`;
+
